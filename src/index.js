@@ -8,10 +8,15 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider} from 'react-redux';
 import store from './store';
 
+//router
+import { BrowserRouter  } from 'react-router-dom';
+
 const app = (
+  <BrowserRouter >
     <Provider store={store}>
       <App />
     </Provider>
+  </BrowserRouter >
 )
 
 ReactDOM.render(
