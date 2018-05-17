@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 
 import Contact from './Contact';
 import About from './About';
@@ -7,6 +7,11 @@ import About from './About';
 class Dashboard extends Component {
   render() {
     const { match } = this.props;
+    console.log(match);
+    if(!match){
+      return <div/>
+    }
+
     return (
       <div style={{flex: 1}}>
         <div style={{flex: 1}}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { Link, Route   } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
@@ -21,9 +21,13 @@ class App extends Component {
         </nav>
 
         <div>
-          <Route exact path="/" component={Home}/>
-          <Route path="/dashboard" component={Dashboard}/>
-          <Route path="/login" component={Login}/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/dashboard" render={(props) => true ? (<Dashboard {...props}/>): (<Redirect to="/login" />)}/>
+            <Route path="/login" component={Login}/>
+            <Route render={()=> <div>page not found</div>} />
+          </Switch>
+
         </div>
       </div>
     );
